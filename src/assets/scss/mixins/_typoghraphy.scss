@@ -1,0 +1,55 @@
+@mixin base-font ($color, $weight) {
+  font-family: $roboto;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: 1rem; //16 px
+  line-height: 1.188rem; //19px
+  color: $color;
+}
+
+@mixin font-danger {
+  font-family: $roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.875rem; //14px
+  line-height: 1rem; //16
+  /* or 65% */
+  color: $danger;
+}
+
+@mixin font-xs{
+  font-family: $roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem; //12px
+  line-height: 0.875rem; //14px
+}
+
+@mixin card-title {
+  font-family: $roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.125rem; //34px
+  line-height: 1.375rem; //22px
+  /* or 65% */
+  color: $primary-color;
+  
+  // align-items: center;
+  letter-spacing: 0.0025em;
+}
+
+@mixin button-font($color){
+  font-family: $roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  color: $color
+}
+
+
+
+@mixin cell-spacing(){
+  padding-top: 1.313rem;
+  padding-bottom: 1.25rem;
+}

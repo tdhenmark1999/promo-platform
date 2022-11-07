@@ -1,0 +1,70 @@
+<div class="row">
+  <div (click)="dashboard()" class="create-campaign-back-link">
+    <span><img src="assets/img/left-arrow.svg" />Go back to dashboard</span>
+  </div>
+</div>
+<div class="center create-campaign-container">
+  <nb-layout>
+    <nb-layout-column class="p-0">
+      <nb-stepper orientation="horizontal" disableStepNavigation>
+        <nb-step label="Info">
+          <div class="create-card">
+            <div>
+              <div class="campaignForm">
+                <app-campaign-info-form
+                  (campaignFormValue)="saveForm($event)"
+                  [mode]="mode"
+                ></app-campaign-info-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+        <nb-step label="Audience">
+          <div class="create-card">
+            <div>
+              <div class="audienceForm">
+                <app-audience-form
+                ></app-audience-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+        <nb-step label="Rules">
+          <div class="create-card">
+            <div>
+              <div class="rulesForm">
+                <app-rules-form
+                  [types]="types$ | async"
+                  [limitations]="limitations$ | async"
+                  [fldCampaignId]="fldCampaignId$ | async"
+                ></app-rules-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+        <nb-step label="Rewards">
+          <div class="create-card">
+            <div>
+              <div class="rewardsForm">
+                <app-rewards-form
+                  [fldCampaignId]="fldCampaignId$ | async"
+                  [fldCodeEntryId]="fld_CodeEntryId$ | async"
+                  [redemption]="redemptions$ | async"
+                  [rewards]="rewards$ | async"
+                  [campaignPayload]="campaignPayload$ | async"
+                  [audiencePayload]="audiencePayload$ | async"
+                  [uploadedFile]="audienceFilePayload$ | async"
+                  [limitationPayload]="limitationPayload$ | async"
+                  [typesPayload]="typesPayload$ | async"
+                  [audienceFileNamePayload]="audienceFileNamePayload$ | async"
+                  (campaignFormValue)="saveForm($event)"
+                >
+                </app-rewards-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+      </nb-stepper>
+    </nb-layout-column>
+  </nb-layout>
+</div>

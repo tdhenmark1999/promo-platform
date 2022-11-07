@@ -1,0 +1,13 @@
+// IMPORT FONTS
+@font-face {
+    font-family: "Montserrat";
+    src: local("Montserrat"), url(../../fonts/Montserrat-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto"), url(../../fonts/Roboto-Regular.ttf) format("truetype");
+}
+
+// Variable Fonts
+$montserrat: 'Montserrat';
+$roboto: 'Roboto';

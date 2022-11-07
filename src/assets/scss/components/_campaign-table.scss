@@ -1,0 +1,80 @@
+table.pp-table {
+  margin-bottom: 0;
+  thead tr{ 
+    background: #E6E9EC;
+    border-bottom: 0;
+    th {
+      @include base-font($font-header-color, 500);
+      @include cell-spacing();
+      border-bottom: none;
+      vertical-align: bottom;
+      border-bottom: 2px solid #E6E9EC;
+
+      img{
+        margin-left: 0.625rem;
+      }
+    }
+  }
+  tbody {
+    tr{ 
+      td{
+        @include base-font($primary-color, 400);
+        @include cell-spacing();
+
+      }
+      th{
+        @include base-font($font-header-color, 400);
+        @include cell-spacing();
+      }
+    }
+  }
+}
+
+.circle {
+    height: 25px;
+    width: 25px;
+    border-radius: 10%;
+    display: inline-block;
+}
+
+.dot {
+    height: 0.625rem;
+    width: 0.625rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.blue {
+    background-color: $success;
+}
+
+.yellow {
+    background-color: $warning;
+}
+
+.red {
+    background-color: $danger;
+}
+
+.gray {
+    background-color: $completed;
+}
+
+.empty-state{
+  margin-top: 2rem;
+  .title{
+    padding: 0;
+    @include card-title();
+    font-size: 1.5rem;
+    margin-bottom: 1.188rem;
+  }
+  .text{
+    padding: 0;
+    p{
+      margin: 0;
+      text-align: center;
+      @include base-font($primary-color, 400);
+    }
+  }
+}

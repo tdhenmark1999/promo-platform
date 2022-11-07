@@ -1,0 +1,103 @@
+<form [formGroup]="campaignInfoForm">
+  <div class="title">
+    <p>Campaign Info</p>
+    <span>The title and duration of your campaign.</span>
+  </div>
+  <div class="form-name-container">
+    <label for="basic-url" class="campaignLabel">Campaign Name</label>
+    <div class="input-group">
+      <input
+        [class.input-error]="errorInCampaignName"
+        id="campaignName"
+        #campaignName
+        maxlength="60"
+        type="text"
+        placeholder="Campaign Name"
+        aria-label="Username"
+        formControlName="fld_CampaignName"
+      />
+    </div>
+    <div
+      class="error-container"
+      *ngIf="errorInCampaignName; else campaignNameCounter"
+    >
+      Please enter a campaign name.
+    </div>
+    <ng-template #campaignNameCounter>
+      <div class="input-counter-container">
+        Characters remaining: {{ 60 - campaignName.value.length }}
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="dates">
+    <div class="date-container">
+      <div class="date-group">
+        <label><span>Start Date</span></label>
+        <input
+          [class.input-error]="errorInStartDate"
+          type="date"
+          placeholder="Start Date"
+          aria-label="Username"
+          formControlName="fld_StartDate"
+          min="{{ startDateMinValue | date: 'YYYY-MM-dd' }}"
+          (change)="onDateChange($event)"
+        />
+
+        <div class="error-container" *ngIf="errorInStartDate">
+          <span>{{ startDateErrorMessage }}</span>
+        </div>
+      </div>
+
+      <div class="date-group">
+        <label><span>End Date</span></label>
+        <input
+          [class.input-error]="errorInEndDate"
+          type="date"
+          placeholder="End Date"
+          aria-label="Username"
+          formControlName="fld_EndDate"
+          (change)="onDateChange($event)"
+          [min]="endDateMinValue"
+          [attr.disabled]="isEndDateDisabled ? '' : null"
+        />
+        <div class="error-container" *ngIf="errorInEndDate">
+          <span>{{ endDateErrorMessage }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button
+      class="pp-button-confirm"
+      nbStepperNext
+      *ngIf="campaignInfoForm.valid && mode !== 'edit'"
+      (click)="intialSavingForm()"
+    >
+      Next
+    </button>
+    <button
+      class="pp-button-confirm"
+      *ngIf="!campaignInfoForm.valid && mode !== 'edit'"
+      (click)="decoySubmit()"
+    >
+      Next
+    </button>
+    <button
+      *ngIf="mode === 'edit'"
+      (click)="cancelEdit()"
+      class="pp-button-cancel"
+    >
+      Cancel
+    </button>
+    <button
+      *ngIf="mode === 'edit'"
+      (click)="updateCampaignInfo()"
+      class="pp-button-confirm"
+      [disabled]="!campaignInfoForm.valid"
+    >
+      Save
+    </button>
+  </div>
+</form>

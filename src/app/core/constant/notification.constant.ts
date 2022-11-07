@@ -1,0 +1,1 @@
+export const ALERT_NOTIFICATION_ERROR_TITLE = 'Something Went Wrong';

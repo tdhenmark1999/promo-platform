@@ -1,0 +1,56 @@
+.pp-button-confirm{
+  width: 9.75rem;
+  max-height: 3rem;
+  padding: 0.75rem 0;
+  background: $primary-color;
+  border-radius: 6.25rem;
+  border: 0.094rem solid $primary-color;
+  @include button-font($white);
+
+}
+
+.pp-button-cancel{
+  width: 9.75rem;
+  max-height: 3rem;
+  padding: 0.75rem 0;
+  background: $white;
+  border-radius: 6.25rem;
+  @include button-font($primary-color);
+
+}
+
+.link {
+  @include base-font($ligh-blue, 700);
+  cursor: pointer;
+
+  img {
+    margin-right: 0.75rem;
+    max-height: 1.5rem;
+  }
+}
+
+.back-link {
+  @include base-font($primary-color, 700);
+  cursor: pointer;
+  margin-bottom: 2.875rem;
+  img {
+    margin-right: 0.8rem;
+  }
+}
+
+//from create dashboard
+.create-campaign-button{
+  display: flex;
+  align-items: center;
+  width: 12.938rem;
+  button{
+    background: $primary-color;
+    border-radius: 5.625rem;
+    @include base-font($white, 700);
+    border: none;
+    img{
+      margin-right: 1rem;
+    }
+  }
+  
+}

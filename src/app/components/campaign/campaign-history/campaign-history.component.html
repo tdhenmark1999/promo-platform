@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="back-link" (click)="dashboard()">
+    <img src="assets/img/left-arrow.svg" />Go back to dashboard
+  </div>
+</div>
+
+<div class="col-12 dashboard-card">
+  <div class="dashboard-title">
+    <span class="table-title">Campaign History</span>
+  </div>
+  <div class="dashboard-filter">
+    <!-- Demo Table Only Will Make the Campaign History another Shared Components-->
+    <app-dashboard-filter
+      [status]="options"
+      class="padding-0"
+    ></app-dashboard-filter>
+  </div>
+  <div class="table">
+    <app-dashboard-table></app-dashboard-table>
+  </div>
+</div>

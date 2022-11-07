@@ -1,0 +1,52 @@
+.btn{
+  flex-grow: 1;
+  padding: 10px;
+  margin: 0 0.3rem;
+}
+
+.confirm-btn{
+  color: #fff;
+  background-color: #0E81B4;
+}
+
+.pp-modal-content{
+  margin-bottom: 2.875rem;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+.pp-modal-header{
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  padding: 1.563rem 1.563rem;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.188rem;
+
+}
+
+.pp-modal-body{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  /* or 138% */
+
+  padding: 0 1.563rem 2.5rem;
+}
+
+.pp-modal-buttons{
+  margin-top: 2.188;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.188rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}

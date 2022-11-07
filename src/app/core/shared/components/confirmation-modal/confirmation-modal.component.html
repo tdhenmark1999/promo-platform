@@ -1,0 +1,16 @@
+<div class="pp-modal-header">
+  <h4 class="modal-title text-dark">{{ title }}</h4>
+</div>
+
+<div class="pp-modal-body text-center">
+  <div class="pp-modal-content">{{message}}</div>
+
+  <div class="pp-modal-buttons">
+    <button class="btn" (click)="cancel()">
+      {{ cancelButton }}
+    </button>
+    <button class="btn confirm-btn" (click)="delete()">
+      {{ confirmButton }}
+    </button>
+  </div>
+</div>

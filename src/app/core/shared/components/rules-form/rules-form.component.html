@@ -1,0 +1,121 @@
+<div class="title">
+  <p>Rules</p>
+  <span
+    >Conditions and limitations for the reward.</span
+  >
+</div>
+
+<form [formGroup]="transactionTypeForm">
+  <div class="form-group-container">
+    <label>Transaction Type</label>
+    <div *ngIf="errorInTransaction" class="error-container">
+      <span> Please select a transaction type. </span>
+    </div>
+
+    <div *ngFor="let t of types; let i = index">
+      <div 
+        [ngClass]="{'radio-selected': isThisTypeSelected(t.fld_TransactionId)}"
+        class="radio"
+        >
+        <nb-radio-group
+          formControlName="fld_TransactionId"
+          (valueChange)="onTransactionTypeChange($event)"
+        >
+          <nb-radio [value]="t.fld_TransactionId">
+            {{ t.fld_TransactionType }}
+          </nb-radio>
+        </nb-radio-group>
+      </div>
+    </div>
+  </div>
+</form>
+
+<form [formGroup]="limitationsForm">
+  <div class="form-group-container">
+    <label>Limitations</label>
+    <div *ngIf="errorInLimitationForm" class="error-container">
+      <span *ngIf="isMininmumPrincipalSelected">
+        Please input a valid number with a maximum of 2 decimal places for the minimum principal amount.
+      </span>
+      <span *ngIf="!isMininmumPrincipalSelected"> Please select a limitation. </span>
+    </div>
+
+    <div *ngFor="let l of limitations; let i = index">
+      <div
+        [ngClass]="{'radio': l.fld_LimitationId != 5,
+        'radio-with-input': l.fld_LimitationId == 5,
+        'radio-selected': isThisLimitationSelected(l.fld_LimitationId)}"
+      >
+        <nb-radio-group
+          formControlName="fld_LimitationId"
+          (valueChange)="onLimitationsChange($event)"
+        >
+          <nb-radio
+            [value]="l.fld_LimitationId"
+            [disabled]="l.fld_LimitationId == 5 && isPawningSelected"
+          >
+            {{ l.fld_Limitation }}
+          </nb-radio>
+        </nb-radio-group>
+        <div
+          *ngIf="l.fld_LimitationId == 5 && isMininmumPrincipalSelected"
+          class="input "
+        >
+          <span class="input-prefix ">PHP</span>
+          <input
+            type="text"
+            class="principal-width"
+            placeholder="0.00"
+            decimals="2"
+            formControlName="minimum_principal"
+            (blur)="convertCurrencyFormat()"
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<div
+  class="button-container"
+  *ngIf="mode == 'edit'; 
+  else newCampaignButtons"
+>
+  <button (click)="cancelEdit()" class="pp-button-cancel">Cancel</button>
+  <button
+    class="pp-button-confirm"
+    *ngIf="transactionTypeForm.valid && limitationsForm.valid"
+    (click)="updateForm()"
+  >
+    Save
+  </button>
+  <button
+    class="pp-button-confirm"
+    *ngIf="!transactionTypeForm.valid || !limitationsForm.valid"
+    (click)="decoySubmit()"
+  >
+    Save
+  </button>
+</div>
+
+<ng-template #newCampaignButtons>
+  <div class="button-container" #newCampaignButtons>
+    <button nbStepperPrevious class="pp-button-cancel">Back</button>
+    <button
+      nbStepperNext
+      class="pp-button-confirm"
+      *ngIf="transactionTypeForm.valid && limitationsForm.valid"
+      (click)="initialSavingForm()"
+    >
+      Next
+    </button>
+    <button
+      class="pp-button-confirm"
+      *ngIf="!transactionTypeForm.valid || !limitationsForm.valid"
+      (click)="decoySubmit()"
+    >
+      Next
+    </button>
+  </div>
+</ng-template>

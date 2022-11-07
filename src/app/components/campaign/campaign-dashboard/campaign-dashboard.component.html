@@ -1,0 +1,49 @@
+<div class="row" *ngIf="!isDashboard">
+  <div class="back-link" (click)="dashboard()">
+    <img src="assets/img/left-arrow.svg" />Go back to dashboard
+  </div>
+</div>
+
+<div class="col-12 dashboard-card">
+  <div class="dashboard-title">
+    <span>24k Campaigns</span>
+    <span (click)="history()" class="link" *ngIf="isDashboard">
+      <img src="assets/img/history.svg" />
+      Campaign History
+    </span>
+  </div>
+  <div class="dashboard-filter">
+    <app-dashboard-filter
+      [status]="statusOptions"
+      [services]="serviceOptions"
+      [isDashboard]="isDashboard"
+      [disableAllForms]="isCampaignTableEmpty"
+      [searchValue]="searchFilter"
+      [serviceValue]="serviceFilter"
+      [statusValue]="statusFilter"
+      class="padding-0"
+    ></app-dashboard-filter>
+    <span *ngIf="isDashboard" class="create-campaign-button">
+      <button (click)="create()" type="button">
+        <img src="assets/img/add-plus.svg" />Create campaign
+      </button>
+    </span>
+  </div>
+  <div class="table">
+    <app-dashboard-table
+        [isDashboard]="isDashboard"
+        [dashboardData]="dashboardData$ | async"
+        [dashboardDataLength]="numberOfRecords"
+        [isDashboardLoading]="isDashboardPerPageLoading$ | async"
+        [itemsPerPage]="itemsPerPage"
+        [totalPages]="totalPages"
+        [currentPage]="currentPage"
+        [pageSize]="pageSize"
+        [isCampaignTableEmpty]="isCampaignTableEmpty"
+        (selectedPage)="pageChange($event)"
+        [userId]="userId"
+        [name]="name"
+    ></app-dashboard-table>
+  </div>
+
+</div>

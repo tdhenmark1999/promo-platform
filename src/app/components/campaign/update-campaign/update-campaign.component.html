@@ -1,0 +1,82 @@
+<div class="row">
+  <div (click)="dashboard()" class="create-campaign-back-link">
+    <span><img src="assets/img/left-arrow.svg" />Go back to dashboard</span>
+  </div>
+</div>
+<div class="center create-campaign-container">
+  <nb-layout>
+    <nb-layout-column class="p-0">
+      <nb-stepper
+        [selectedIndex]="selectedIndex"
+        orientation="horizontal"
+        disableStepNavigation
+        [linear]="false"
+      >
+        <nb-step [label]="form_type">
+          <div class="create-card">
+            <div>
+              <div class="campaignForm" *ngIf="form_type == campaignFormName">
+                <app-campaign-info-form
+                  [mode]="mode"
+                  [campaignInfo]="campaign_info$ | async"
+                  (campaignFormValue)="updateForm($event)"
+                >
+                </app-campaign-info-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+        <nb-step label="Audience">
+          <div class="create-card">
+            <div>
+              <div class="audienceForm" *ngIf="form_type == audienceFormName">
+                <app-audience-form
+                  [mode]="mode"
+                  [fldCampaignId]="campaignId"
+                  [audienceValues]="audience$ | async"
+                  [audienceFileValues]="audienceFileValuesPayload$ | async"
+                  [audienceFileName]="audienceFileNamePayload$ | async"
+                  (audienceFormValue)="updateForm($event)"
+                ></app-audience-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+        <nb-step label="Rules">
+          <div class="create-card">
+            <div>
+              <div class="rulesForm" *ngIf="form_type == rulesFormName">
+                <app-rules-form
+                  [mode]="mode"
+                  [types]="types$ | async"
+                  [limitations]="limitations$ | async"
+                  [type]="type$ | async"
+                  [limitation]="limitation$ | async"
+                  [fldCampaignId]="campaignId"
+                  (updateRulesFormValue)="updateForm($event)"
+                ></app-rules-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+        <nb-step label="Rewards">
+          <div class="create-card">
+            <div>
+              <div class="rewardsForm" *ngIf="form_type == rewardsFormName">
+                <app-rewards-form
+                  [redemption]="redemptions$ | async"
+                  [redemptionValues]="redemption$ | async"
+                  [rewards]="rewards$ | async"
+                  [rewardValues]="reward$ | async"
+                  [mode]="mode"
+                  [fldCampaignId]="campaignId"
+                  (updateRewardsFormValue)="updateForm($event)"
+                ></app-rewards-form>
+              </div>
+            </div>
+          </div>
+        </nb-step>
+      </nb-stepper>
+    </nb-layout-column>
+  </nb-layout>
+</div>

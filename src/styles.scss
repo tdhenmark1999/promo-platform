@@ -1,0 +1,341 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.invalid-feedback {
+    width: 20%;
+    display: contents;
+}
+
+/* .label-index {
+    background-color: #000;
+    color: #fff;
+} */
+
+.nb-theme-default nb-stepper .header .step.selected .label-index {
+    background-color: #00263E;
+    color: #fff;
+    border: none;
+}
+
+.nb-theme-default nb-stepper .header .label-index {
+    border-color: #00263E !important;
+    color: #00263E;
+    border-width: 2px !important;
+}
+
+.nb-theme-default .step.selected .label {
+    color: #00263E;
+    font-weight: 700 !important;
+}
+
+.nb-theme-default nb-stepper .header .step.completed .label-index {
+    background-color: #00263E !important;
+}
+
+.nb-theme-default .label {
+    color: #00263E !important;
+    font-weight: 500 !important;
+}
+
+.nb-theme-default nb-stepper .header .connector {
+    background-color: #00263E !important;
+}
+
+.nb-theme-default nb-stepper.horizontal .header .connector {
+    margin: 1rem 0 !important;
+}
+
+/* .nb-theme-default nb-stepper.horizontal .header .step {
+    margin: 0 !important;
+} */
+
+::placeholder {
+    color: #9fabae;
+}
+
+.font-s13 {
+    font-size: 13px;
+}
+
+.font-s16 {
+    font-size: 16px;
+}
+
+.font-s20 {
+    font-size: 20px;
+}
+
+.font-s24 {
+    font-size: 24px;
+}
+
+.font-s34 {
+    font-size: 34px;
+}
+
+.text-blue {
+    color: #3d596c;
+}
+
+.text-blue-l {
+    color: #0E81B4;
+}
+
+.text-green {
+    color: #2EC3B1;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-dark {
+    color: #00263E;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-normal {
+    text-transform: none !important;
+}
+
+.shadow {
+    box-shadow: 10px 10px 8px 10px #888888;
+}
+
+.auto {
+    margin: auto !important;
+}
+
+.disp-b {
+    display: block !important;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.border-5-r {
+    border-radius: 5px;
+}
+
+.border-10 {
+    border-radius: 10px;
+}
+
+.border-20 {
+    border-radius: 20px !important;
+}
+
+.border-30 {
+    border-radius: 30px;
+}
+
+.border-gray {
+    border-color: #f3f4f5;
+}
+
+.border-blue {
+    border: 1px solid #cfe6f0;
+}
+
+.border-dark {
+    border: 2px solid #00263e;
+}
+
+.border-solid {
+    border-style: solid;
+}
+
+.border-gray-s {
+    border: 1px solid #e7e7e7;
+}
+
+.bg-blue {
+    background-color: #0e81b4;
+}
+
+.bg-silver {
+    background-color: #B3BEC5;
+}
+
+.bg-gray {
+    background-color: #f7f9f9;
+}
+
+.bg-gray-d {
+    background-color: #e6e9ec;
+}
+
+.bg-light {
+    background-color: #f7f9f9;
+}
+
+.bg-dark {
+    background-color: #00263E;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.margin-0-10 {
+    margin: 0 10px;
+}
+
+.margin-5-t {
+    margin-top: 5px;
+}
+
+.margin-15-t {
+    margin-top: 15px;
+}
+
+.margin-20-t {
+    margin-top: 20px;
+}
+
+.margin-30-t {
+    margin-top: 30px !important;
+}
+
+.margin-40-t {
+    margin-top: 40px !important;
+}
+
+.margin-15-b {
+    margin-bottom: 15px;
+}
+
+.margin-40-b {
+    margin-bottom: 40px;
+}
+
+.padding-0 {
+    padding: 0 !important;
+}
+
+.padding-0-l {
+    padding-left: 0;
+}
+
+.padding-0-r {
+    padding-right: 0;
+}
+
+.padding-30 {
+    padding: 30px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-0-10 {
+    padding: 0 10px;
+}
+
+.padding-0-30 {
+    padding: 0 30px;
+}
+
+.padding-0-35 {
+    padding: 0 35px;
+}
+
+.padding-3-10 {
+    padding: 3px 10px;
+}
+
+.padding-7-12 {
+    padding: 7px 12px;
+}
+
+.padding-10-0 {
+    padding: 10px 0;
+}
+
+.padding-10-7 {
+    padding: 10px 7px;
+}
+
+.padding-10-35 {
+    padding: 10px 35px;
+}
+
+.padding-15-0 {
+    padding: 15px 0;
+}
+
+.padding-15-30 {
+    padding: 15px 30px;
+}
+
+.padding-20-0 {
+    padding: 20px 0;
+}
+
+.padding-30-0 {
+    padding: 30px 0;
+}
+
+.padding-0-t {
+    padding: 0;
+}
+
+.padding-10-t {
+    padding-top: 10px;
+}
+
+.padding-20-t {
+    padding-top: 20px;
+}
+
+.padding-30-t {
+    padding-top: 30px;
+}
+
+.padding-0-b {
+    padding-bottom: 0;
+}
+
+.font-w400 {
+    font-weight: 400;
+}
+
+.font-w600 {
+    font-weight: 600;
+}
+
+.font-w700 {
+    font-weight: 700;
+}
+
+.border-b {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+
+
+//Import all the stylesheets
+
+@import './assets/scss/variables/variables';
+@import './assets/scss/mixins/mixins';
+@import './assets/scss/base/base';
+@import './assets/scss/components/components';
+@import './assets/scss/layout/layout';
+@import './assets/scss/vendors/vendors';
+

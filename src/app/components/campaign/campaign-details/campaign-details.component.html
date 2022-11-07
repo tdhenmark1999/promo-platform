@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="row col-4 campaign-details-back-link">
+    <span (click)="dashboard()">
+      <img src="assets/img/left-arrow.svg"/>Go back to dashboard
+    </span>
+  </div>
+  <div class="col-4 center text-center campaign-details-header">
+    Campaign Details
+  </div>
+</div>
+<div class="center">
+  <app-campaign-detail
+    [campaign_info]="campaign_info$ | async"
+    [type]="type$ | async"
+    [limitation]="limitation$ | async"
+    [reward]="reward$ | async"
+    [redemption]="redemption$ | async"
+    [audience]="audience$ | async"
+    [isCampaignInfoLoading] ="isCampaignInfoLoading$ | async"
+  ></app-campaign-detail>
+</div>
+<div class="center delete-campaign-container" (click)="deleteCampaignModal()">
+  <span>
+    <img src="assets/img/delete.svg" />
+    Delete campaign
+  </span>
+</div>
+
+<div class="center">
+  <div class="activity-log-container">
+    <div class="title">Activity Log</div>
+    <div class="list-container">
+      <div
+        class="line-container"
+        *ngIf="activityLogsLength > 1"
+      >
+        <div class="line"></div>
+      </div>
+      
+      <div class="logs-container">
+        <div
+          *ngFor="let act of activityLogs$ | async"
+          class="log-instance"
+        >
+          <span class="log-dot"></span>
+          <span
+            class="log-content"
+            [ngClass]="{
+              'log-edited': act.activityName == 'Edited',
+              'log-cancelled':act.activityName == 'Cancelled'
+            }"
+          >
+            {{act.activityName}} {{act.activityDate | date}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

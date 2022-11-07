@@ -1,0 +1,49 @@
+.pp-modal-container {
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  width: 22.5rem;
+
+  .pp-modal-header{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    @include base-font($primary-color, 500);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  .pp-modal-body{
+    .pp-modal-content{
+      align-items: center;
+      text-align: center;
+      display: flex;
+      @include base-font($primary-color, 400);
+      line-height: 1.375rem;
+      overflow-wrap: break-word; 
+      margin-bottom: 2.875rem;
+    }
+    .pp-modal-buttons{
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      .btn{
+        flex-grow: 1;
+        padding: 0.875rem;
+        max-height: 3rem;
+        border-radius: 0.5rem;
+        @include base-font($primary-color, 700);
+      }
+
+      .confirm-btn{
+        @include base-font($white, 700);
+        background-color: $ligh-blue;
+      }
+    }
+  }
+    
+
+}

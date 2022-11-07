@@ -1,0 +1,68 @@
+.alertSuccess {
+  background: #2EC3B1;  
+  color: white;
+  text-align:center;
+  max-height: 3rem;
+  margin: -2rem -3.75rem 0;
+  padding: 0.875rem 4.285rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  -webkit-animation: fadeInOut 3s;
+  animation: fadeInOut 3s;
+}
+
+.hidden {
+  visibility: hidden;
+  padding:0;
+  display: none;
+  -webkit-animation: fadeInOut 3s;
+  animation: fadeInOut 3s;
+}
+
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+@-webkit-keyframes fadeInOut {
+  0% {
+      opacity: 0;
+  }
+  16% {
+      opacity: 1;
+  }
+  84% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+@keyframes fadeInOut {
+  0% {
+      opacity: 0;
+  }
+  16% {
+      opacity: 1;
+  }
+  84% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}

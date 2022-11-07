@@ -1,0 +1,199 @@
+<div class="details-card" *ngIf="!isCampaignInfoLoading">
+  <div class="details-box border-bottom campaign_info" *ngIf="campaign_info &&  !isCampaignInfoLoading">
+    <div class="title-container">
+      <span class="title"><span class="circle">1</span>Campaign Info</span>
+      <span 
+        class="edit"
+        *ngIf="disableAllEdit(campaign_info)"
+        (click)="updateCampaign({ form_type: 'Campaign' })">
+        <img src="assets/img/edit-pencil.svg" />
+        Edit
+      </span>
+      <span 
+        class="disable"
+        *ngIf="!disableAllEdit(campaign_info)">
+        <img src="assets/img/edit-pencil-gray.svg" />
+        Edit
+      </span>
+    </div>
+
+    <div class="details-line bottom-space">
+      <span> Campaign Name </span>
+      <span>
+        <p>{{ campaign_info.fld_CampaignName }}</p>
+      </span>
+    </div>
+
+    <div class="details-line">
+      <span> Campaign Duration</span>
+      <span>
+        <p>
+          {{ campaign_info.fld_StartDate | date }} -
+          {{ campaign_info.fld_EndDate | date }}
+        </p>
+      </span>
+    </div>
+  </div>
+  
+  <div class="details-box border-bottom">
+    <div class="title-container">
+      <span class="title"><span class="circle">2</span>Audience</span>
+      <span
+        class="edit"
+        *ngIf="disableAudienceEdit(campaign_info)"
+        (click)="updateCampaign({ form_type: 'Audience' })"
+      >
+        <img src="assets/img/edit-pencil.svg" />
+        Edit
+      </span>
+      <span class="disable" *ngIf="!disableAudienceEdit(campaign_info)">
+        <img src="assets/img/edit-pencil-gray.svg" />
+        Edit
+      </span>
+    </div>
+
+    <div class="details-line" *ngIf="audience && !isCampaignInfoLoading">
+      <span class="target-audience"> Target Audience </span>
+      <span>
+        <p>
+          <ng-container *ngFor="let a of audience; let isLast = last">
+            <ng-container *ngIf="a.fld_Audience">
+              {{ a.fld_Audience }}{{ isLast ? "" : ", " }}
+            </ng-container>
+          </ng-container>
+        </p>
+        <p>
+          <ng-container *ngFor="let a of audience">
+            <span *ngIf="a.fld_Path">({{ a.fld_Path }})</span>
+          </ng-container>
+        </p>
+      </span>
+    </div>
+  </div>
+
+  <div class="details-box border-bottom">
+    <div class="title-container">
+      <span class="title"><span class="circle">3</span>Rules</span>
+      <span 
+        class="edit"
+        *ngIf="disableAllEdit(campaign_info)"
+        (click)="updateCampaign({ form_type: 'Rules' })">
+        <img src="assets/img/edit-pencil.svg" />
+        Edit
+      </span>
+      <span 
+        class="disable"
+        *ngIf="!disableAllEdit(campaign_info)">
+        <img src="assets/img/edit-pencil-gray.svg" />
+        Edit
+      </span>
+    </div>
+
+    <div class="details-line bottom-space" *ngIf="type && !isCampaignInfoLoading">
+      <span> Transaction Type </span>
+      <span>
+        <p>{{ type.fld_TransactionType }}</p>
+      </span>
+    </div>
+    <div class="details-line" *ngIf="limitation">
+      <span> Limitations </span>
+      <span>
+        <p>{{ limitation.fld_Limitation }}</p>
+        <p *ngIf="limitation.fld_Limitation === 'Minimum amount on principal'">
+          (PHP {{ limitation.fld_MinimumAmount | currency: " " }})
+        </p>
+      </span>
+    </div>
+  </div>
+
+  <div class="details-box">
+    <div class="title-container">
+      <span class="title"><span class="circle">4</span>Reward</span>
+      <span
+        class="edit"
+        *ngIf="disableAllEdit(campaign_info)"
+        (click)="updateCampaign({ form_type: 'Rewards' })">
+        <img src="assets/img/edit-pencil.svg" />
+        Edit
+      </span>
+      <span
+        class="disable"
+        *ngIf="!disableAllEdit(campaign_info)">
+        <img src="assets/img/edit-pencil-gray.svg" />
+        Edit
+      </span>
+    </div>
+
+    <div class="details-line bottom-space" *ngIf="redemption && !isCampaignInfoLoading">
+      <span> Redemption </span>
+      <span>
+        <p>{{ redemption.fld_Redemption }}</p>
+      </span>
+    </div>
+    <div class="details-line bottom-space" *ngIf="reward">
+      <span> Reward </span>
+      <span>
+        <p>{{ reward.fld_Reward }}</p>
+        <p
+          *ngIf="
+            reward.fld_Reward === 'Points Rebate' ||
+            reward.fld_Reward === 'Fixed Points'
+          "
+        >
+          (
+          {{
+            reward.fld_Reward === "Points Rebate"
+              ? reward.fld_PointsRebate + "%"
+              : reward.fld_Reward === "Fixed Points"
+              ? reward.fld_FixedPoints
+              : null
+          }}
+          )
+        </p>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<div class="details-card" *ngIf="isCampaignInfoLoading">
+  <div class="details-box border-bottom campaign_info">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div> 
+  </div>
+
+  <div class="details-box border-bottom campaign_info">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div> 
+  </div>
+
+  <div class="details-box border-bottom">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="details-box border-bottom">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="details-box">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<form [formGroup]="audienceForm">
+  <div class="title">
+    <p>Audience</p>
+    <span
+      >Target participants for the campaign. You may select more than one.</span
+    >
+    <div *ngIf="errorInAudienceForm" class="error-container">
+      <span> Please select an audience. </span>
+    </div>
+  </div>
+  <div class="form-group-container" formArrayName="audience_list">
+    <div
+      *ngFor="let row of audienceFormGroup?.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div
+        [ngClass]="{
+          checkbox: i != 4,
+          'checkbox-with-input': i == 4,
+          'checkbox-selected': isAudienceChecked(
+            row?.get('audience_value')?.value
+          )
+        }"
+      >
+        <nb-checkbox (checkedChange)="onChecked($event, row, i)" [checked]="isAudienceChecked(row?.get('audience_value')?.value)">
+          {{ row?.get("audience_name")?.value }}
+        </nb-checkbox>
+        <div class="info" *ngIf="i == 4 && !isExportFile">
+          <span>File must be in .csv format and must not exceed 00mb.</span>
+        </div>
+
+        <div class="input" *ngIf="i == 4 && isExportFile">
+          <div class="form-group file-import"
+            *ngIf="isFileDecoy && mode == 'edit'">
+            <input
+              #fileInputDecoy
+              [value]="fileDecoyValue"
+              class="form-control-file"
+              readonly="true"
+            />
+            <span class="upload-reset-icon">
+              <img src="assets/img/x-icon.svg" (click)="removeDecoyFileValue()" />
+            </span>
+          </div>
+          <div class="form-group file-import"
+            *ngIf="!isFileDecoy">
+            <input
+              #fileInput
+              id="fileInput"
+              type="file"
+              class="form-control-file"
+              (change)="onSelectFile($event, i)"
+            />
+            <span class="upload-reset-icon" *ngIf="selectedFile">
+              <img src="assets/img/x-icon.svg" (click)="removeFileItem()" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div
+  class="button-container"
+  *ngIf="mode == 'edit'; 
+  else newCampaignButtons"
+>
+  <button (click)="cancelEdit()" class="pp-button-cancel">Cancel</button>
+  <button
+    class="pp-button-confirm"
+    *ngIf="!errorInAudienceForm && selectedAudience.length > 0"
+    type="button"
+    [disabled]="formSubmitAttempt"
+    (click)="updateAudienceForm()"
+  >
+    Save
+  </button>
+  <button
+    class="pp-button-confirm"
+    *ngIf="selectedAudience.length == 0 || errorInAudienceForm"
+    type="button"
+    (click)="decoySubmit()"
+  >
+    Save
+  </button>
+</div>
+
+<ng-template #newCampaignButtons>
+  <div class="button-container">
+    <button nbStepperPrevious class="pp-button-cancel">Back</button>
+    <button
+      (click)="initialSaveAudienceForm()"
+      class="pp-button-confirm"
+      *ngIf="!errorInAudienceForm && selectedAudience.length > 0 && mode !== 'edit'"
+      [disabled]="!formSubmitAttempt"
+      nbStepperNext
+      [disabled]="formSubmitAttempt"
+    >
+      Next
+    </button>
+
+    <button
+      (click)="decoySubmit()"
+      class="pp-button-confirm"
+      *ngIf="mode !== 'edit' && selectedAudience.length == 0 || errorInAudienceForm"
+    >
+      Next
+    </button>
+  </div>
+</ng-template>

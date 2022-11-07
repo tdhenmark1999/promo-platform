@@ -1,0 +1,59 @@
+.activity-log-container{
+  width: 37.5rem;
+  margin-top: 5.25rem;
+  margin-bottom: 2.5rem;
+  .title{
+    @include card-title();
+    font-size: 1.5rem;
+  }
+  .list-container{
+    flex-direction: row;
+    display: flex;
+
+    .logs-container{
+      z-index: 200;
+
+      .log-instance{
+        margin-top: 2.5rem;
+        @include base-font($primary-color, 400);
+        span{
+          vertical-align: middle;
+        }
+
+        .log-dot{
+          height: 0.938rem;
+          width: 0.938rem;
+          border-radius: 50%;
+          display: inline-block;
+          margin-right: 1.5rem;
+          background-color: #B3BEC5;
+        }
+        .log-content{
+          color: $success;
+        }
+
+        .log-edited{
+          color: #4D6778;
+        }
+
+        .log-cancelled{
+          color: $danger;
+        }
+      }
+    }
+
+    .line-container{
+      padding-top: 2.7rem;
+      padding-bottom: 0.4rem;
+      z-index: 180;
+      padding-left: 0.5rem;
+      margin-right: -0.5rem;
+
+      .line{
+        border-left: 1.5px dashed #CCD4D8;     
+        position: relative;
+        height: 100%;   
+      }
+    }
+  }
+}

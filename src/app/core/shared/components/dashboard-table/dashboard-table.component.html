@@ -1,0 +1,122 @@
+<table class="table pp-table">
+  <thead>
+    <tr>
+      <th scope="col">Created<img src="assets/img/down-arrow.png" /></th>
+      <th scope="col">Campaign Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Service</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="!isDashboardLoading">
+    <tr
+      class="tbl-hover"
+      *ngFor="
+        let campaign of dashboardData
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: currentPage,
+                totalItems: totalPages
+              }
+      "
+    >
+      <td scope="row">{{ campaign.fld_DateCreated | date }}</td>
+      <td (click)="gotoDetails(campaign.fld_CampaignId)" class="pointer">
+        {{
+          campaign.fld_CampaignName.length > 30
+            ? (campaign.fld_CampaignName | slice: 0:30) + "..."
+            : campaign.fld_CampaignName
+        }}
+      </td>
+      <td>
+        <span
+          class="dot"
+          [ngClass]="{
+            blue: campaign.fld_IsStatus === 1,
+            red: campaign.fld_IsStatus === 3,
+            yellow: campaign.fld_IsStatus === 2
+          }"
+        ></span>
+        {{
+          campaign.fld_IsStatus === 1
+            ? "Active"
+            : campaign.fld_IsStatus === 3
+            ? "Cancelled"
+            : campaign.fld_IsStatus === 2
+            ? "Scheduled"
+            : null
+        }}
+      </td>
+      <td>{{ campaign.fld_TransactionType }}</td>
+      <td>{{ campaign.fld_StartDate | date }}</td>
+      <td>{{ campaign.fld_EndDate | date }}</td>
+      <td>
+        <span (click)="deleteCampaignModal(campaign)">
+          <img
+            src="assets/img/delete.svg"
+            [hidden]="campaign.fld_IsStatus === 1"
+          />
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div 
+  *ngIf="!isDashboardLoading &&
+  !isCampaignTableEmpty &&
+  dashboardDataLength == 0"
+  class="empty-state"
+  >
+  <div class="title center">
+    No Contents Found
+  </div>
+</div>
+
+<div
+  *ngIf="isDashboardLoading"
+  class="empty-state"
+>
+  <div class="title center">
+      Loading ...
+  </div>
+  <div class="text center">
+  </div>
+</div>
+
+<div 
+  *ngIf="!isDashboardLoading &&
+  dashboardDataLength > 15"
+  class="pagination-container center"
+>
+  <pagination-controls 
+    class="pp-pagination"
+    [directionLinks]="true"
+    [maxSize]="6"
+    [previousLabel]="''"
+    [nextLabel]="''"
+    [responsive]="true"
+    (pageChange)="pageChange($event)"
+  ></pagination-controls>
+</div>
+
+<div
+  *ngIf="
+    isDashboard &&
+    isCampaignTableEmpty &&
+    !isDashboardLoading
+  "
+  class="empty-state"
+>
+  <div class="title center">Welcome to Promogram!</div>
+  <div class="text center">
+    <p>
+      This is where your active and scheduled campaigns will be displayed.
+      Create your first campaign by clicking on the button on the top right!
+    </p>
+  </div>
+</div>

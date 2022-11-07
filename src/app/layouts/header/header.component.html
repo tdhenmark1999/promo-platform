@@ -1,0 +1,20 @@
+<div class="pp-nav">
+    <div class="logo-container" (click)="goToDashboard()">
+      <img src="assets/img/promogram-white.svg" height="35" alt="">
+      <span>Promogram</span>
+    </div>
+
+    <div>
+      <img src="assets/img/24k-white.svg" height="30" alt="">
+    </div>
+
+
+    <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-header" id="dropdownBasic1" ngbDropdownToggle>
+            <img  class="header-avatar" src="assets/img/default-profile.svg">
+            Admin</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem (click)="clickLogout()">Logout</button>
+        </div>
+      </div>
+</div>

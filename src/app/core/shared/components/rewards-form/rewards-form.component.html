@@ -1,0 +1,138 @@
+<div class="title">
+  <p>Rewards</p>
+  <span>Redemption method and reward type.</span>
+</div>
+
+<form [formGroup]="redemptionForm">
+  <div class="form-group-container">
+    <label>Redemption</label>
+    <div *ngIf="errorInRedemptionForm" class="error-container">
+      <span> Please select a redemption method. </span>
+    </div>
+
+    <div *ngFor="let r of redemption; let i = index">
+      <div
+        [ngClass]="{
+          radio: r.fld_RedemptionId != 3,
+          'radio-with-input': r.fld_RedemptionId == 3,
+          'radio-selected': isThisRedemptionSelected(r.fld_RedemptionId)
+        }"
+      >
+        <nb-radio-group formControlName="fld_RedemptionId"
+        (valueChange)="onRedemptionChange($event)"
+        >
+          <nb-radio [value]="r.fld_RedemptionId">{{
+            r.fld_Redemption
+          }}</nb-radio>
+         </nb-radio-group>
+        <div
+          *ngIf="r.fld_RedemptionId == 3 && isOtherPortalsSelected"
+          class="select"
+        >
+          <nb-select
+            fullWidth
+            placeholder="Code Entry Selection"
+            formControlName="fld_Value"
+          >
+            <nb-option value="Cex">Cebx</nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<form [formGroup]="rewardForm">
+  <div class="form-group-container">
+    <label>Reward</label>
+    <div *ngIf="errorInRewardForm" class="error-container">
+      <span *ngIf="!isPointsRebateSelected && !isFixedPointsSelected">
+        Please select reward type.
+      </span>
+      <span *ngIf="isPointsRebateSelected">
+        Please input a valid points rebate percentage value.
+      </span>
+      <span *ngIf="isFixedPointsSelected">
+        Please input a valid fixed points value.</span
+      >
+    </div>
+    <div *ngFor="let r of rewards; let i = index">
+      <div
+        [ngClass]="{
+          radio: r.fld_RewardId != 3 && r.fld_RewardId != 2,
+          'radio-with-input': r.fld_RewardId == 2 || r.fld_RewardId == 3,
+          'radio-selected': isThisRewardSelected(r.fld_RewardId)
+        }"
+      >
+        <nb-radio-group
+          formControlName="fld_RewardId"
+          (valueChange)="onRewardsChange($event)"
+        >
+          <nb-radio [value]="r.fld_RewardId">{{ r.fld_Reward }}</nb-radio>
+        </nb-radio-group>
+        <div *ngIf="r.fld_RewardId == 2 && isFixedPointsSelected" class="input">
+          <input
+            type="number"
+            class="rewards-input"
+            placeholder="Fixed Points"
+            formControlName="fld_FixedPoints"
+          />
+        </div>
+        <div
+          *ngIf="r.fld_RewardId == 3 && isPointsRebateSelected"
+          class="input"
+        >
+          <input
+            type="number"
+            class="rewards-input rebate-input"
+            formControlName="fld_PointsRebate"
+            placeholder="0"
+          />
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="button-container" *ngIf="mode == 'edit'; else newCampaignButtons">
+  <button (click)="cancelEdit()" class="pp-button-cancel">Cancel</button>
+  <button
+    class="pp-button-confirm"
+    *ngIf="redemptionForm.valid && rewardForm.valid"
+    type="button"
+    (click)="updateForm()"
+  >
+    Save
+  </button>
+  <button
+    class="pp-button-confirm"
+    *ngIf="!redemptionForm.valid || !rewardForm.valid"
+    type="button"
+    (click)="decoySubmit()"
+  >
+    Save
+  </button>
+</div>
+
+<ng-template #newCampaignButtons>
+  <div class="button-container">
+    <button nbStepperPrevious class="pp-button-cancel">Back</button>
+    <button
+      class="pp-button-confirm"
+      *ngIf="redemptionForm.valid && rewardForm.valid"
+      type="button"
+      [disabled]="formSubmitAttempt"
+      (click)="saveForm()"
+    >
+      Done
+    </button>
+    <button
+      class="pp-button-confirm"
+      *ngIf="!redemptionForm.valid || !rewardForm.valid"
+      type="button"
+      (click)="decoySubmit()"
+    >
+      Done
+    </button>
+  </div>
+</ng-template>

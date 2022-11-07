@@ -1,0 +1,56 @@
+//Main header design
+.nb-theme-default nb-layout-header nav {
+  color: $white;
+  background-color: $primary-color;
+  box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
+  height: 4.75rem;
+  padding: 1.25rem;
+}
+
+/* TEMPORARY NAV BAR CSS */
+.pp-nav{
+  max-width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+
+  .logo-container{
+    cursor: pointer;
+    :link{
+      text-decoration: none;
+    }
+    :hover{
+      text-decoration: none;
+    }
+    img{
+      margin-right: 0.75rem;
+    }
+    span{
+      @include base-font($white, 700);
+      line-height: 1.375rem;
+      text-decoration: none;
+    }
+  }
+}
+
+
+.btn-header{
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 0.938rem;
+  color: $white;
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+
+.header-avatar{
+  background-color: #E2E2E2;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  width: 1.688rem;
+  max-height: 1.688rem;
+}

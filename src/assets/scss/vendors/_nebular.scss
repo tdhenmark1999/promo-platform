@@ -1,0 +1,58 @@
+//NEBULAR OVERRIDES
+
+//override nebular stepper
+nb-stepper{
+  .step-content{ 
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .header{
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // max-width: 400px;
+    margin-right: 0px;
+    margin-bottom: 2rem;
+    padding: 0 9.5rem;
+
+    .label{
+      span{
+        @include font-xs();
+        color: $primary-color;
+      }
+    }
+  }
+} 
+  
+.nb-theme-default nb-stepper.horizontal .header .step {
+  margin: 0;
+}
+
+//override nb-layout-column
+.nb-theme-default
+  nb-layout
+  .layout
+  .layout-container
+  .content
+  .columns
+  nb-layout-column {
+  padding: 2rem 3.75rem;
+}
+
+
+.nb-theme-default nb-radio .text{
+  @include base-font($primary-color, 400);
+}
+
+.nb-theme-default nb-checkbox .text:not(:empty){
+  padding-left: 1rem;
+}
+
+.nb-theme-default nb-checkbox .text{
+  @include base-font($primary-color, 400);
+  padding-left: 1rem;
+}
+  
+  
+  

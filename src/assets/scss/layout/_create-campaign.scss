@@ -1,0 +1,294 @@
+//CREATE CAMPAIGN CARD
+.create-card{
+  @include pp-card();
+  width: 37.5rem;
+  padding: 2rem;
+
+  label{
+    @include base-font($primary-color, bold);
+    margin-bottom: 1rem;
+  }
+
+  .title{
+    margin-bottom: 1.563rem;
+    p{
+      @include card-title();
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    span{
+      @include base-font($dark-blue, 400);
+    }
+    .error-container{
+      margin-top: 0.5rem;
+      span{
+        @include font-danger;
+      }
+    }
+  }
+
+  .radio{
+    background:  $form-input-bg;
+    /* Ceb Blue Light Extension/Ceb Blue-Light -70% */
+    border: 0.063rem solid $form-input-border;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-height: 4rem;
+    padding:0.7rem 0.5rem 0.7rem 0.5rem;
+    margin-bottom: 1rem;
+    .pp-radio{
+    @include base-font($primary-color, 400);
+    }
+  }
+  .radio-with-input{
+    background:  $form-input-bg;
+    /* Ceb Blue Light Extension/Ceb Blue-Light -70% */
+    border: 0.063rem solid $form-input-border;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-height: 8.125rem;
+    padding:0.7rem 0.5rem 0.7rem 0.5rem;
+    margin-bottom: 1.25rem;
+
+    .native-input:disabled{
+      background: #E6E9EC;
+    }
+    .select{
+      nb-select{
+        background: $white;
+        /* Ceb Blue Dark Extension/Ceb Blue-Dark 0% */
+        border: 0.063rem solid $primary-color;
+        border-radius: 0.25rem;
+        @include base-font($primary-color, 400);
+      }
+      width: 100%;
+      padding: 0.5rem 1.938rem 1rem 1.6rem;
+    }
+
+    .input-prefix{
+      position: relative;
+      right: -1rem;
+      z-index: 1000;
+      @include base-font($primary-color, 400);
+    }
+
+    .input-suffix{
+      position: relative;
+      margin-left: -2rem;
+      z-index: 900;
+      @include base-font($primary-color, 400);
+      font-size: 1.25rem; //20 px
+      line-height: 1.438; //23px
+      margin-top: 0.1rem;
+    }
+
+    .input{
+      padding: 0.5rem 1.938rem 1rem 1.6rem;
+
+      .principal-width{
+        max-width: 13.375rem;
+        margin-left: -1.7rem;
+        padding-left: 3rem;
+      }
+      .rewards-input{
+        max-width: 10.25rem;
+        text-align: right;
+      }
+      .rebate-input{
+        padding-right: 2.75rem;
+      }
+      input{
+        background: $white;
+        /* Ceb Blue Dark Extension/Ceb Blue-Dark 60% */
+        border:  0.063rem solid #000F19;
+        border-radius: 0.25rem;
+        padding: 0.85rem 1rem 0.85rem 1rem;
+        @include base-font($primary-color, 400);
+        &:focus{
+          border: 0.063rem solid $primary-color;
+          outline: none;
+        }
+      }
+      input[type='number'] {
+        -moz-appearance:textfield;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    } 
+  }
+
+  .radio-selected{
+    border: 0.063rem solid #0E81B4;
+    background: $white;
+  }
+
+  .checkbox{
+    background:  $form-input-bg;
+    /* Ceb Blue Light Extension/Ceb Blue-Light -70% */
+    border: 0.063rem solid $form-input-border;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-height: 4rem;
+    padding:0.95rem 1rem 0.85rem 1rem;
+    margin-bottom: 1rem;
+
+  }
+
+  .checkbox-with-input{
+    background:  $form-input-bg;
+    /* Ceb Blue Light Extension/Ceb Blue-Light -70% */
+    border: 0.063rem solid $form-input-border;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-height: 8.125rem;
+    padding:0.95rem 1rem 0.85rem 1rem;
+    margin-bottom: 1rem;
+
+    .info{
+      padding: 0.2rem 0 0.15rem 2rem;
+      @include font-danger();
+      color: #80939F;
+    }
+
+    .upload-reset-icon{
+      position: relative;
+      margin-left: -2.3rem;
+      z-index: 900;
+      cursor: pointer;
+    }
+
+    .input{ //File upload type
+      padding: 0.5rem 1.938rem 0.8rem 2rem;
+      width: 100%;
+      input{
+        padding: 0.66rem 3rem 0.66rem 1rem;
+        width: 100%;
+        background: $white;
+        /* Ceb Blue Dark Extension/Ceb Blue-Dark 0% */
+        border: 0.063rem dashed $primary-color;
+        border-radius: 0.25rem;
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .checkbox-selected{
+    border: 0.063rem solid #0E81B4;
+    background: $white;
+  }
+  
+  input{
+    background: $form-input-bg;
+    border: 0.063rem solid $form-input-border;
+    border-radius: 0.25rem;
+    width: 100%;
+    @include base-font($primary-color, 400);
+  }
+  .form-group-container{
+    margin-bottom: 2rem;
+    .error-container{
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+      span{
+        @include font-danger;
+      }
+    }
+  }
+
+  .form-name-container{
+    margin-bottom: 1.563rem;
+    .error-container{
+      @include font-danger();
+      line-height: 1.375rem;
+      word-break: break-word;
+      word-break: break-word;
+      max-width: 16rem;
+    }
+    .input-counter-container{
+      @include font-danger();
+      color: #80939F;
+      line-height: 1.375rem;
+    }
+    .input-error{
+      border: 0.063rem solid $danger;
+    }
+
+    input{
+      padding: 0.85rem 1rem 0.85rem 1rem;
+      margin-bottom: 0.25rem;
+      &:focus{
+        border: 0.063rem solid #000F19;
+        outline: none;
+        background: $white;
+      }
+    }
+  }
+
+  .button-container{ //should make this a mixin
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .date-container{
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    .date-group{
+      flex-basis: 100px;
+      flex-grow: 1;
+      flex-shrink: 0;
+
+      .input-error{
+        border: 0.063rem solid $danger;
+      }
+      .error-container{
+        margin: 0;
+        span{
+          @include font-danger();
+          line-height: 1.375rem;
+        }
+      }
+      input{
+        padding: 0.6rem 1rem 0.55rem 1rem;
+        margin-bottom: 0.25rem;
+        &:focus{
+          border: 0.063rem solid $primary-color;
+          outline: none;
+          background: $white;
+        }
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 1;
+        display: block;
+        background: url('../../img/calendar-icon.svg') no-repeat;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-width: thin;
+        @include base-font($primary-color, 400);
+      }
+    }
+
+
+
+  }
+}
+//END CREATE CARD
+
+.create-campaign-container{
+  margin-top: -1rem;
+}
+
+.create-campaign-back-link{
+  @include base-font($primary-color, 700);
+  cursor: pointer;
+
+  img {
+    margin-right: 0.8rem;
+  }
+}

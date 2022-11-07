@@ -1,0 +1,104 @@
+//START DETAILS CARD
+.details-card{
+  @include pp-card();
+  width: 37.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.875rem;
+
+  .border-bottom{
+    border-bottom: #DADCDD solid 0.063rem;
+  }
+
+  .details-box{
+    max-height: 13.125rem;
+    padding: 2rem 2.5rem;
+
+
+
+    .title-container{
+      display: flex;
+      justify-content: space-between;
+      vertical-align: middle;
+      margin-bottom: 2rem;
+      
+      .title{
+        @include card-title();
+        font-size: 1.25rem;
+        letter-spacing: 0.0015em;
+      }
+
+      .circle{
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        background: $primary-color;
+        text-align: center;
+
+        margin-right: 0.5rem;
+        @include base-font($white, 500);
+        line-height: 1.6rem;
+      }
+
+      .edit{
+        img{
+          margin-right: 0.5rem;
+        }
+        @include base-font($ligh-blue, 700);
+      }
+    }
+
+    .details-line{
+      display: flex;
+      justify-content: space-between;
+
+      .target-audience{
+        white-space: nowrap;
+        margin-right: 3rem;
+      }
+
+      span{
+        @include base-font($primary-color, 400);
+        p{
+          text-align: right;
+          padding: 0;
+          margin: 0;
+          @include base-font($primary-color, 400);
+        }
+      }
+    }
+    .bottom-space{
+      margin-bottom: 1rem;
+    }
+  }
+}
+//END DETAILS CARD
+
+
+//Campaign Details Title
+.campaign-details-header{
+  @include card-title();
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+
+.delete-campaign-container{
+  span{
+    cursor: pointer;
+    @include base-font($primary-color, 700);
+    img{
+      margin-right: 0.625rem;
+    }
+  }
+}
+
+.campaign-details-back-link {
+  @include base-font($primary-color, 700);
+  cursor: pointer;
+
+  img {
+    margin-right: 0.8rem;
+  }
+}

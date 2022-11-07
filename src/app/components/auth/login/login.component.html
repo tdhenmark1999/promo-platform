@@ -1,0 +1,40 @@
+<div class="text-center">
+  <img src="assets/img/promogram blue 1.png" />
+  <div class="font-w700 font-s34 text-dark padding-20-0">Promogram</div>
+  <div class="font-s16 text-dark">Campaign creation and monitoring</div>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)">
+  <div
+    class="border-10 border-gray-s text-dark font-s16 font-w600 padding-30 col-5 auto margin-40-t"
+  >
+    <div class="center margin-40-b">
+      <img draggable="false" src="assets/img/24k-svg.svg" />
+    </div>
+    Admin username
+    <input
+      class="form-control bg-light border-blue margin-5-t"
+      type="text"
+      placeholder="Enter username"
+      formControlName="email"
+    />
+    <div class="margin-30-t">Password</div>
+    <input
+      class="form-control bg-light border-blue margin-5-t"
+      type="password"
+      placeholder="Enter password"
+      formControlName="password"
+    />
+    <div class="submit_btn">
+      <button
+        nbButton
+        shape="semi-round"
+        type="submit"
+        size="large"
+        status="success"
+        [disabled]="!getSubmitButton()"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</form>
